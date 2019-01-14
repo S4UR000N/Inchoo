@@ -1,7 +1,7 @@
 <?php
 
 // namespace
-//namespace Controller;
+namespace Controller;
 
 // class
 class FrontController extends BaseController {

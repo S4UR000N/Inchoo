@@ -1,9 +1,9 @@
 <?php
 
 // namespace
-//namespace Controller;
+namespace Controller;
 
 // class
-class test {
+class testController {
 	public function test() { echo "hi"; }
 }

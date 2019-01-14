@@ -1,7 +1,7 @@
 <?php
 
 // namespace
-//namespace Controller;
+namespace Controller;
 
 // abstract class BaseController
 abstract class BaseController {
