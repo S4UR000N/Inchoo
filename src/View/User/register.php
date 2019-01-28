@@ -1,26 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-
-<!-- Inc -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-
-<!-- Style.Inc -->
+<!-- Spacing -->
+<br /><br /><br /><br />
 
 <!-- Form -->
-<form action="" method="POST">
- <input type="text" name="name"/><br />
- <input type="email" name="email"/><br />
- <input type="password" name="password"/><br />
- <input type="password" name="confirm_password"/><br />
- 
- <input type="submit" value="Click me (:"/>
-<form>
+<div class="d-flex justify-content-center">
+ <form class="Sign_Up d-flex flex-column" method="post" action="">
+  <h1 class="header bg-dark rounded mx-auto p-3" style="color: white;">Register</h1>
+   <?php // Display Validation Errors here
+   if(isset($viewData) && !empty($viewData['error'])) {
+    echo '<div class="Error bg-dark text-danger mx-auto border rounded px-3 pt-3 pb-1">';
+    foreach($viewData['error'] as $error) {
+     echo "<p>$error</p>";
+    }
+    echo '<div>';
+   }
+   ?>
+
+<div class="label">Name</div>
+<input class="input" type="text" name="user_name" value="<?php if(isset($viewData) && !empty($viewData['postData']['user_name'])) { trim($viewData['postData']['user_name']); } ?>"/>
+
+<div class="label">Email</div>
+<input class="input" type="email" name="user_email" value="<?php if(isset($viewData) && !empty($viewData['postData']['user_email'])) { trim($viewData['postData']['user_email']); } ?>"/>
+
+<div class="label">Password</div>
+<input class="input" type="password" name="user_password" value=""/>
+
+<div class="label">Confirm Password</div>
+<input class="input" type="password" name="user_confirm_password" value=""/>
+
+<button class="btn" type="submit" style="background-color: #eaa81b;">Register</button>
+<p class="align-self-center">or <a href="http://inchoo.local/login">Login</a></p>
+</form>
+</div>
+
+<?php
+var_dump($viewData);
+?>
+
+<!-- Style -->
+<style>
+.Error {
+width: 100%;
+}
+.input { border-radius: 5px; }

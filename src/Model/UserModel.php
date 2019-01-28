@@ -6,23 +6,23 @@ namespace Model;
 // class User
 class User {
     // properties
-    private $id;
-    private $name;
-    private $email;
-    private $password;
+    private $user_id;
+    private $user_name;
+    private $user_email;
+    private $user_password;
 
     // id -> getId
-    public function getId() { return $this->id; }
+    public function getUserId() { return $this->user_id; }
 
     // name -> setName, getName
-    public function setName($name) { $this->name = $name; }
-    public function getName() { return $this->name; }
+    public function setUserName($name) { $this->user_name = $name; }
+    public function getUserName() { return $this->user_name; }
 
     // email -> setEmail, getEmail
-    public function setEmail($email) { $this->email = $email; }
-    public function getEmail() { return $this->email; }
+    public function setUserEmail($email) { $this->user_email = $email; }
+    public function getUserEmail() { return $this->user_email; }
 
     // password -> setPassword, getPassword
-    public function setPassword($password) { $this->password = $password; }
-    public function getPassword() { return $this->password; }
+    public function setUserPassword($password) { $this->user_password = $password; }
+    public function getUserPassword() { return $this->user_password; }
 }
