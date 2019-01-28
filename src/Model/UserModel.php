@@ -4,7 +4,7 @@
 namespace Model;
 
 // class User
-class User {
+class UserModel {
     // properties
     private $user_id;
     private $user_name;
@@ -25,4 +25,6 @@ class User {
     // password -> setPassword, getPassword
     public function setUserPassword($password) { $this->user_password = $password; }
     public function getUserPassword() { return $this->user_password; }
+
+    public function user_works() { echo "WOOOOOOOOO"; }
 }

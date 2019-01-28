@@ -1,6 +1,6 @@
 <?php
 spl_autoload_register(function ($classname) {
-
+    var_dump($classname); echo "<br>";
 		// auto fullfill path
 		//if(strpos($classname, 'Controller') !== false)  { $classname = 'Controller\\' . $classname; }
 		//if(strpos($classname, 'Model') !== false)  { $classname = 'Model\\' . $classname; }

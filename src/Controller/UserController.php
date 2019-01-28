@@ -12,7 +12,9 @@ class UserController extends BaseController {
 
 	// registration method
 	public function register() {
-		if($_SERVER['REQUEST_METHOD'] === 'GET') { $this->render_view("User:register", 1); }
+		if($_SERVER['REQUEST_METHOD'] === 'GET') { //$this->render_view("User:register", 1);
+			$user = new Model\UserModel();
+		}
 		else {
 			$this->viewData['postData']['user_name'] = $_POST['user_name'];
 			$this->viewData['postData']['user_email'] = $_POST['user_email'];

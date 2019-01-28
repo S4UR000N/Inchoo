@@ -4,7 +4,7 @@
 namespace Model;
 
 // class File
-class File {
+class FileModel {
     // properties
     private $user_id;
     private $file_id;

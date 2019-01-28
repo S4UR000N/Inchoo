@@ -16,10 +16,10 @@
    ?>
 
 <div class="label">Name</div>
-<input class="input" type="text" name="user_name" value="<?php if(isset($viewData) && !empty($viewData['postData']['user_name'])) { trim($viewData['postData']['user_name']); } ?>"/>
+<input class="input" type="text" name="user_name" value="<?php if(isset($viewData) && !empty($viewData['postData']['user_name'])) { echo trim($viewData['postData']['user_name']); } ?>"/>
 
 <div class="label">Email</div>
-<input class="input" type="email" name="user_email" value="<?php if(isset($viewData) && !empty($viewData['postData']['user_email'])) { trim($viewData['postData']['user_email']); } ?>"/>
+<input class="input" type="email" name="user_email" value="<?php if(isset($viewData) && !empty($viewData['postData']['user_email'])) { echo trim($viewData['postData']['user_email']); } ?>"/>
 
 <div class="label">Password</div>
 <input class="input" type="password" name="user_password" value=""/>
@@ -31,10 +31,6 @@
 <p class="align-self-center">or <a href="http://inchoo.local/login">Login</a></p>
 </form>
 </div>
-
-<?php
-var_dump($viewData);
-?>
 
 <!-- Style -->
 <style>
