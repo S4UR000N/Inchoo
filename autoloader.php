@@ -4,8 +4,8 @@ spl_autoload_register(function ($classname) {
 		// auto fullfill path
 		if(strpos($classname, 'Controller') !== false && strpos($classname, 'Model') !== false)  {
       echo "Replacing: "; var_dump($classname); echo "<br>";
-      str_replace("Controller\\", "", $classname);
-      echo "Replacement: "; var_dump($classname); echo "<br>DONE???<br><br>";
+      $classname = str_replace("Controller\\", "", $classname);
+      echo "Replacement: "; var_dump($classname); echo "<br>"WTF"???<br><br>";
     }
 		//if(strpos($classname, 'Model') !== false)  { $classname = 'Model\\' . $classname; }
 
