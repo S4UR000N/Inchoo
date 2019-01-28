@@ -7,7 +7,10 @@ session_start();
 require "autoloader.php";
 
 // Load Routes
-$routes = require "router/routes.php";
+$routes = require "Router/routes.php";
+
+// Load Header
+require "Layout/Header/header.php";
 
 // Load Router and render Page or Error 404
-require "router/router.php";
+require "Router/router.php";

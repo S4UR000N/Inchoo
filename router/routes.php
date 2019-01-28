@@ -2,8 +2,8 @@
 
 // routes
 return array(
-    ""                              => "FrontController:home",
-    "/"                             => "FrontController:home",
+    ""                              => "HomeController:home",
+    "/"                             => "HomeController:home",
 
     "/User/Register"                => "UserController:register",
     "/User/Register/"               => "UserController:register",
