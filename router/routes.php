@@ -6,10 +6,10 @@ return array(
     "/"                             => "HomeController:home",
 
     "/register"                     => "UserController:register",
-    "/register"                     => "UserController:register",
+    "/register/"                    => "UserController:register",
 
     "/login"                        => "UserController:login",
-    "/login"                        => "UserController:login",
+    "/login/"                        => "UserController:login",
 
     "/test"                         => "testController:test"
 );

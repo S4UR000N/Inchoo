@@ -9,5 +9,5 @@ abstract class BaseRepository {
   protected $pdoConnection;
 
   // open Connection
-  public function __construct() { $this->pdoConnection = Connection::getInstance()->getPdoConnection(); echo "<h1>Connected</h1> }
+  public function __construct() { $this->pdoConnection = \Connection::getInstance()->getPdoConnection(); }
 }

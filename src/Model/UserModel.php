@@ -25,6 +25,4 @@ class UserModel {
     // password -> setPassword, getPassword
     public function setUserPassword($password) { $this->user_password = $password; }
     public function getUserPassword() { return $this->user_password; }
-
-    public function user_works() { echo "WOOOOOOOOO"; }
 }
