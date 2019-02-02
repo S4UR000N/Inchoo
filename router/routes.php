@@ -11,6 +11,6 @@ return array(
     "/login"                        => "UserController:login",
     "/login/"                       => "UserController:login",
 
-    "/test"                         => "TestController:test",
-    "/test/"                        => "TestController:test"
+    "/logout"                       => "LogoutController:logout",
+    "/logout/"                      => "LogoutController:logout"
 );

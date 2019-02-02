@@ -19,9 +19,8 @@
 
 <!-- Header -->
 <?php
-if(!empty($_SESSION)) {
-  if(!empty($_SESSION['user_id']) && !empty($_SESSION['user_name']) && !empty($_SESSION['user_email'])) { require "header.in.php"; }
-} else { require "header.out.php"; }
+if(!isset($_COOKIE['login'])) { require "header.out.php"; }
+else { require "header.in.php"; }
 
 // Header Style
 require "header_style.php";

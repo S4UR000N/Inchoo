@@ -134,12 +134,13 @@ class UserController extends BaseController {
 				$user_check = $userRepo->selectOneByEmailAndPassword($user_email, $user_password)->fetch(\PDO::FETCH_ASSOC);
 
 				$user_id = $user_check['user_id'];
+				$_SESSION['user_name'] = $user_check['user_name'];
 
 				// Set Cookie
 				setcookie("login", $user_id, time() + (86400), "/");
 
 				// Redirect
-				header("location: http://inchoo.local/login");
+				header("location: http://inchoo.local/");
 			}
 		}
 	}
