@@ -9,7 +9,8 @@ return array(
     "/register/"                    => "UserController:register",
 
     "/login"                        => "UserController:login",
-    "/login/"                        => "UserController:login",
+    "/login/"                       => "UserController:login",
 
-    "/test"                         => "testController:test"
+    "/test"                         => "TestController:test",
+    "/test/"                        => "TestController:test"
 );
