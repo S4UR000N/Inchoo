@@ -4,6 +4,7 @@
     <title>Inchoo</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Here is a precise description of my awesome webpage.">
 </head>
 <body>
 

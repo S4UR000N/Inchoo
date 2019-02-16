@@ -1,7 +1,7 @@
 <?php
 echo "I am for logged OUT users!<br><br>";
-if(isset($_COOKIE['login']) && isset($_SESSION['user_name'])) { echo '<div id="cs">' . $_COOKIE['login'] . "::" . $_SESSION['user_name'] . '</div>'; }
-else { echo "meh"; }
+if(isset($_COOKIE['login'])) { echo '<div id="cookie">' . $_COOKIE['login'] . '</div>'; }
+else { echo "no cookie"; }
 ?>
 
 

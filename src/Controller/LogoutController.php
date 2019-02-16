@@ -7,14 +7,14 @@ namespace Controller;
 class LogoutController extends BaseController {
 	public function logout() {
 		// Unset Cookie
-		setcookie("login", "", time() - 86400, "/");
+		setcookie("login", FALSE, -1, '/', 'inchoo.local');
 
 		// Destory Session
-		session_destroy();
+		//session_destroy();
 
 		// Redirect
-		if(isset($_COOKIE['login']) && isset($_SESSION['user_name'])) { echo '<div id="cs">' . $_COOKIE['login'] . "::" . $_SESSION['user_name'] . '</div>'; }
-		else { echo "meh"; }
-		header("location: http://inchoo.local/");
+		if(isset($_COOKIE['login'])) { echo '<div id="cookie">' . $_COOKIE['login'] . '</div>'; }
+		else { echo "no cookie"; }
+		//header("location: http://inchoo.local/");
 	}
 }
