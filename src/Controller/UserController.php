@@ -133,17 +133,14 @@ class UserController extends BaseController {
 				$user_password = md5($_POST['user_password']);
 				$user_check = $userRepo->selectOneByEmailAndPassword($user_email, $user_password)->fetch(\PDO::FETCH_ASSOC);
 
-				$user_id =  "cookie value"; // $user_check['user_id'];
-				//$_SESSION['user_name'] = $user_check['user_name'];
+				// Set Session
+				$_SESSION['user_id'] = $user_check['user_id'];
+				$_SESSION['user_name'] = $user_check['user_name'];
 
-				// Set Cookie
-				setcookie("login", $user_id, time() + 86400, "inchoo.local", "inchoo.local", false, true);
-				if(isset($_COOKIE['login'])) { echo $_COOKIE['login']; } else { echo "no cookie"; }
-
-				//setcookie("login", FALSE, -1, '/', 'inchoo.local');
-				//if(isset($_COOKIE['login'])) { echo $_COOKIE['login']; } else { echo "not set"; }
+				echo "<pre>";
+				var_dump($_SESSION);
 				// Redirect
-				//header("location: http://inchoo.local/");
+				header("location: http://inchoo.local/");
 			}
 		}
 	}

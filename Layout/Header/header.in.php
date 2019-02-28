@@ -3,9 +3,9 @@
  <img id="header_circle" class="mt-1 mb-1 ml-1" src="Layout/Assets/Icons/header_circle.png">
 
  <div id="navBtns" class="container row align-items-center justify-content-around col-11">
-  <a class="header_pages btn border-top-0 border-bottom-0" href="http://os.local/management">Management</a>
-  <a class="header_pages btn border-top-0 border-bottom-0" href="http://os.local/myaccount">My Account</a>
-  <a class="header_pages btn border-top-0 border-bottom-0" href="http://os.local/logout">Logout</a>
+  <a class="header_pages btn border-top-0 border-bottom-0" href="http://inchoo.local/management">Management</a>
+  <a class="header_pages btn border-top-0 border-bottom-0" href="http://inchoo.local/myaccount">My Account</a>
+  <a class="header_pages btn border-top-0 border-bottom-0" href="http://inchoo.local/logout">Logout</a>
  </div>
 </div>
 

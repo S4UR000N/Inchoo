@@ -1,11 +1,4 @@
-<?php
-echo "I am for logged OUT users!<br><br>";
-if(isset($_COOKIE['login'])) { echo '<div id="cookie">' . $_COOKIE['login'] . '</div>'; }
-else { echo "no cookie"; }
-?>
-
-
-<button id="btn" class="btn btn-dark btn-lg" style="color: white; position: relative; left: 49%;">Click Me (:</button>
+<button id="btn" class="btn btn-dark btn-lg" style="color: white; position: relative; left: 49%;" onclick="AjaxGetAllFiles();">Click Me (:</button>
 
 <script>
 // Windows width & height
@@ -17,4 +10,9 @@ var $header_height = $("#header").outerHeight();
 // #read_create_delete's height
 $btn_position = ($window_height - $header_height) / 2;
 $('#btn').css({ "top": $btn_position });
+
+// Triger for Ajax Request
+function AjaxGetAllFiles() {
+	console.log("this part works");
+}
 </script>

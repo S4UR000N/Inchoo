@@ -20,8 +20,7 @@
 
 <!-- Header -->
 <?php
-if(!isset($_COOKIE['login'])) { require "header.out.php"; }
-else { require "header.in.php"; }
+if(array_key_exists("user_id", $_SESSION)) { require "header.in.php"; } else { require "header.out.php"; }
 
 // Header Style
 require "header_style.php";
