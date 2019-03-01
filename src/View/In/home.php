@@ -13,10 +13,17 @@ $('#btn').css({ "top": $btn_position });
 
 // Triger for Ajax Request
 function AjaxGetAllFiles() {
+	var AjaxGetAllFilesRequest = JSON.stringify(['AjaxController:AjaxGetAllFiles']);
 	$.ajax({
-	  url: 'http://inchoo.local/src/Ajax/AjaxController.php', //the page containing php script
-	  type: 'POST', //request type,
-	  success:function(data){ console.log(data); }
+	  url: 'http://inchoo.local/index.php',
+	  type: 'POST',
+		data: { 0:AjaxGetAllFilesRequest },
+	  success:function(data) {
+			if(data == 0) { $('#btn').html("AJAX FAILED!!!"); }
+			else {
+				console.log(data);
+			}
+		}
 	});
 }
 </script>
