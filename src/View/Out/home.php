@@ -13,6 +13,17 @@ $('#btn').css({ "top": $btn_position });
 
 // Triger for Ajax Request
 function AjaxGetAllFiles() {
-	console.log("this part works");
+	var AjaxGetAllFilesRequest = 'AjaxController:AjaxGetAllFiles';
+	$.ajax({
+	  url: 'http://inchoo.local/index.php',
+	  type: 'POST',
+		data: { ajax:AjaxGetAllFilesRequest },
+	  success:function(data) {
+			if(data == 0) { $('#btn').html("AJAX FAILED!!!"); }
+			else {
+				console.log(data);
+			}
+		}
+	});
 }
 </script>

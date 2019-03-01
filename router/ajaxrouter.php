@@ -2,9 +2,8 @@
 
 // if Request Exists Process it
 if($_POST) {
-	// exract JSON data
-	$route = json_decode($_POST[0])[0];
-
+	// exract Request data
+	$route = $_POST['ajax'];
 
 	// seperate Controller & Method
 	$controller_method = explode(':', $route);
