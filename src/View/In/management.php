@@ -1,8 +1,12 @@
+<?php
+if(array_key_exists("invalid", $viewData)) { echo '<script>var $alert ="' . $viewData['invalid'][0] . '";</script>'; }
+else if(array_key_exists("uploaded", $viewData)) {
+	if($viewData['uploaded']) { echo '<script>var $alert = "File Uploaded!"</script>'; }
+	else if(!$viewData['uploaded']) { echo '<script>var $alert = "File Upload Failed!");</script>'; }
+}
+?>
+
 <!-- MODALS.START -->
-
-<!-- Description, Modal -->
-
-
 <!-- MODALS.END -->
 
 
@@ -15,13 +19,7 @@
 </div>
 
 <div>FILES HERE</div>
-<?php
-if(array_key_exists("invalid", $viewData)) { echo '<script>var $alert ="' . $viewData['invalid'][0] . '";</script>'; }
-else if(array_key_exists("uploaded", $viewData)) {
-	if($viewData['uploaded']) { echo '<script>var $alert = "File Uploaded!"</script>'; }
-	else if(!$viewData['uploaded']) { echo '<script>var $alert = "File Upload Failed!");</script>'; }
-}
-?>
+
 
 <style>
 #img_up_ctrl_con { margin-left: 60px; }
@@ -53,7 +51,7 @@ function img_up() {
 
   if($iu[0].files.length !== 0 ) {
 		$iucc.addClass("btn-group");
-    $iucc.html("<button class='btn bg-success' type='submit'>Submit</button><button class='btn bg-danger' type='button' onclick='rewind_upload()'>Cancel</button>");
+    $iucc.html("<button class='btn bg-dark text-light' type='submit'>Submit</button><button class='btn bg-warning' type='button' onclick='rewind_upload()'>Cancel</button>");
   }
 }
 
