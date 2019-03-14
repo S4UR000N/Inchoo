@@ -8,7 +8,7 @@ class FileModel {
     // properties
     private $user_id;
     private $file_id;
-    private $file;
+    private $file_name;
 
     // user_id -> setUserId, getUserId
     public function setUserId($user_id) { $this->user_id = $user_id; }
@@ -19,7 +19,7 @@ class FileModel {
     public function getFileId() { return $this->file_id; }
 
     // file -> setFile, getFile
-    public function setFile($file) { $this->file = $file; }
-    public function getFile() { return $this->file; }
+    public function setFileName($file_name) { $this->file_name = $file_name; }
+    public function getFileName() { return $this->file_name; }
 
 }

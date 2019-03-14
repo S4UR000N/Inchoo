@@ -8,9 +8,9 @@
 
  color: #7d0000;
 
- background: #eaa81b;
+ /*background: #eaa81b;*/
 
- border: 5px solid #fd7014;
+ border: 5px solid #428bca;
  }
 .header_pages:hover { color: #012c0b; }
 </style>

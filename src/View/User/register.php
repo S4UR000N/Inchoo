@@ -27,7 +27,7 @@
 <div class="label">Confirm Password</div>
 <input class="input" type="password" name="user_confirm_password" value=""/>
 
-<button class="btn" type="submit" style="background-color: #eaa81b;">Register</button>
+<button class="btn text-light" type="submit" style="font-size: 20px; background-color: #4da3ff">Register</button>
 <p class="align-self-center">or <a href="http://inchoo.local/login">Login</a></p>
 </form>
 </div>
