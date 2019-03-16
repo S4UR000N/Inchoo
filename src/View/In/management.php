@@ -1,4 +1,5 @@
 <?php
+// File Upload Errors and Feedback
 if(array_key_exists("invalid", $viewData)) { echo '<script>var $alert ="' . $viewData['invalid'][0] . '";</script>'; }
 else if(array_key_exists("uploaded", $viewData)) {
 	if($viewData['uploaded']) { echo '<script>var $alert = "File Uploaded!"</script>'; }
@@ -18,8 +19,28 @@ else if(array_key_exists("uploaded", $viewData)) {
  </form>
 </div>
 
-<div>FILES HERE</div>
-
+<table class="table table-dark table-bordered table-striped">
+ <thead>
+  <tr>
+   <th>Name</th>
+   <th class="text-warning">Preview</th>
+   <th class="text-primary">Download</th>
+	 <th class="text-danger">Delete</th>
+  </tr>
+ </thead>
+ <tbody>
+ 	<?php if(array_key_exists("viewFiles", $viewData)) {
+ 		foreach($viewData['viewFiles'] as $vd) {
+			if($vd['user_id'] == $_SESSION['user_id']) {
+				echo "<tr><td>" . $vd['file_name'] . "</td><td><i class='fas fa-eye text-warning'></i></td><td><i class='fas fa-download text-primary'></i></td><td><i class='fas fa-fire text-danger'></i></td></tr>";
+			}
+			else {
+				//echo "<tr><td>" . $vd['file_name'] . "</td><td><i class='fas fa-eye text-warning'></i></td><td><i class='fas fa-download text-primary'></i></td><td class='text-danger'>Not Owner</td></tr>";
+			}
+		}
+	} ?>
+ </tbody>
+</table>
 
 <style>
 #img_up_ctrl_con { margin-left: 60px; }
@@ -40,6 +61,10 @@ else if(array_key_exists("uploaded", $viewData)) {
 	width: 125px;
 	height: 50px;
 }
+.table th { text-align: center; }
+.table td { text-align: center; }
+.table td:not(:first-child):hover { cursor: url('http://inchoo.local/Layout/Assets/Icons/crosshair_small.png'), default; }
+i { font-size: 18px; }
 </style>
 
 <!-- Script -->

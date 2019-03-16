@@ -5,34 +5,6 @@ namespace Repository;
 
 // class
 class FileRepository extends BaseRepository {
-	public function selectUserFiles($viewData = null) {
-		// Get All Image Files of the User
-		$DB = $this->pdoConnection->query('SELECT file_id, file_name FROM files WHERE user_id = $_SESSION["user_id"]');
-
-		// Image type Holders
-		$hold = array(
- 		 'jpeg' => array(),
- 		 'jpg' => array(),
- 		 'png' => array(),
- 		 );
-
-		// Sort Images
-		foreach($DB as $d) {
- 			// extract extension
- 			$ext = pathinfo($d->file, PATHINFO_EXTENSION);
-
- 			// push to one of the holders
- 			if($ext == "jpeg") { $hold['jpeg'][$d->fid] = $d->file; }
- 			if($ext == "jpg") { $hold['jpg'][$d->fid] = $d->file; }
-			if($ext == "png") { $hold['png'][$d->fid] = $d->file; }
-		}
-
-		// Push nonempty Data to View
-		foreach($hold as $key => $val) { if(!empty($val)) { $viewData[$key] = $val; } }
-
-		// return $viewData data
-		return $viewData;
-	}
 	public function validateFile(array $viewData = array()) {
 		// Error Boolean
 		$err_bool = 0;
@@ -62,6 +34,11 @@ class FileRepository extends BaseRepository {
 		// return View data
 		if($err_bool == 0) { return $viewData = false; }
 		return $viewData;
+	}
+	public function selectUserFilesUnionOtherFiles($viewData = null) {
+		// Get All Image Files of the User and Other Users
+		$DB = $this->pdoConnection->query("SELECT * FROM files WHERE user_id = {$_SESSION['user_id']} UNION SELECT * FROM files WHERE user_id != {$_SESSION['user_id']}")->fetchAll(\PDO::FETCH_ASSOC);
+		return $DB;
 	}
 	public function saveFile(\Model\FileModel $file) {
 		$statement = $this->pdoConnection->prepare("INSERT INTO files (user_id, file_name) VALUES (:user_id, :file_name)");

@@ -42,6 +42,10 @@ class ManagementController extends BaseController {
 			}
 		}
 		// Regular Render Branch
-		else { $this->render_view("In:management", 1, $this->viewData); }
+		else {
+			$fileRepo = new \Repository\FileRepository();
+			$this->viewData['viewFiles'] = $fileRepo->selectUserFilesUnionOtherFiles();
+			$this->render_view("In:management", 1, $this->viewData);
+		}
 	}
 }

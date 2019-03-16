@@ -9,6 +9,10 @@
  </div>
 </div>
 
+<style>
+#header_circle:hover { cursor: url(http://inchoo.local/Layout/Assets/Icons/header_circle_onHover_golden.png), default; }
+</style>
+
 <!-- Script -->
 <script>
 
@@ -63,8 +67,6 @@ $('#navBtns').hide();
 welcome();
 
 direction_change();
-
-
 </script>
 
 
