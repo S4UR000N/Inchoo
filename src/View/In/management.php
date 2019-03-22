@@ -1,4 +1,5 @@
 <?php
+
 // File Upload Errors and Feedback
 if(array_key_exists("invalid", $viewData)) { echo '<script>var $alert ="' . $viewData['invalid'][0] . '";</script>'; }
 else if(array_key_exists("uploaded", $viewData)) {
@@ -8,6 +9,28 @@ else if(array_key_exists("uploaded", $viewData)) {
 ?>
 
 <!-- MODALS.START -->
+
+<!-- Preview File Modal -->
+<div class="modal fade" id="preview">
+ <div class="modal-dialog modal-lg">
+  <div class="modal-content d-flex">
+
+   <!-- Modal Header -->
+   <div class="modal-header">
+    <span class="col-sm-5"></span>
+    <h1 class="col-sm-6">Preview</h1>
+    <button class="close" data-dismiss="modal">&times;</button>
+   </div>
+
+   <!-- Modal body -->
+   <div id="preview_body" class="modal-body row justify-content-center"></div>
+
+   <!-- Modal footer -->
+
+  </div>
+ </div>
+</div>
+
 <!-- MODALS.END -->
 
 
@@ -32,10 +55,20 @@ else if(array_key_exists("uploaded", $viewData)) {
  	<?php if(array_key_exists("viewFiles", $viewData)) {
  		foreach($viewData['viewFiles'] as $vd) {
 			if($vd['user_id'] == $_SESSION['user_id']) {
-				echo "<tr><td>" . $vd['file_name'] . "</td><td><i class='fas fa-eye text-warning'></i></td><td><i class='fas fa-download text-primary'></i></td><td><i class='fas fa-fire text-danger'></i></td></tr>";
+				echo "<tr>" .
+							"<td>" . $vd['file_name'] . "</td>" .
+							"<td class='preview_init' data-user_id='" . $vd['user_id'] . "'" . "data-file_id='" . $vd['file_id'] . "'" . "data-file_name='" . $vd['file_name'] . "' " . "data-toggle='modal' " . "data-target='#preview' " . "><i class='fas fa-eye text-warning'></i></td>" .
+							"<td><a href='http://inchoo.local/uploads/" . $vd['user_id'] . $vd['file_name'] . "' download>" . "<div><i class='fas fa-download text-primary'></i></div></a></td>" .
+							"<td class='delete'><i class='fas fa-fire text-danger'></i></td>" .
+						 "</tr>";
 			}
 			else {
-				//echo "<tr><td>" . $vd['file_name'] . "</td><td><i class='fas fa-eye text-warning'></i></td><td><i class='fas fa-download text-primary'></i></td><td class='text-danger'>Not Owner</td></tr>";
+				echo "<tr>" .
+							"<td>" . $vd['file_name'] . "</td>" .
+							"<td class='preview_init' data-user_id='" . $vd['user_id'] . "'" . "data-file_id='" . $vd['file_id'] . "'" . "data-file_name='" . $vd['file_name'] . "' " . "data-toggle='modal' " . "data-target='#preview' " . "><i class='fas fa-eye text-warning'></i></td>" .
+							"<td><a href='http://inchoo.local/uploads/" . $vd['user_id'] . $vd['file_name'] . "' download>" . "<div><i class='fas fa-download text-primary'></i></div></a></td>" .
+							"<td class='delete text-danger'>Not Owner</td>" .
+						 "</tr>";
 			}
 		}
 	} ?>
@@ -63,7 +96,7 @@ else if(array_key_exists("uploaded", $viewData)) {
 }
 .table th { text-align: center; }
 .table td { text-align: center; }
-.table td:not(:first-child):hover { cursor: url('http://inchoo.local/Layout/Assets/Icons/crosshair_small.png'), default; }
+.table .delete { cursor: url('http://inchoo.local/Layout/Assets/Icons/crosshair_small.png'), default; }
 i { font-size: 18px; }
 </style>
 
@@ -92,4 +125,17 @@ $("document").ready(function() {
 
 
 function myAlert() { if(typeof $alert !== 'undefined') { alert($alert); } }
+
+/* Modals Script */
+// Set Preview Image
+var preview_body = document.getElementById('preview_body');
+$(".preview_init").click(function() {
+	var user_id = this.getAttribute('data-user_id');
+  var file_id = this.getAttribute('data-file_id');
+  var file_name = this.getAttribute('data-file_name');
+  preview_body.innerHTML = "<img src='uploads/"+ user_id + file_name + "' data-file_id="+ file_id+ " data-file_name="+ file_name+ "/>";
+  $("#delete_image").click(function() {
+    delete_image(file_id, file_name);
+  });
+});
 </script>
