@@ -1,11 +1,17 @@
 <?php
-
 // File Upload Errors and Feedback
 if(array_key_exists("invalid", $viewData)) { echo '<script>var $alert ="' . $viewData['invalid'][0] . '";</script>'; }
 else if(array_key_exists("uploaded", $viewData)) {
 	if($viewData['uploaded']) { echo '<script>var $alert = "File Uploaded!"</script>'; }
 	else if(!$viewData['uploaded']) { echo '<script>var $alert = "File Upload Failed!");</script>'; }
 }
+
+// File Deletion Errors and Feedback
+if(array_key_exists("deleted", $viewData)) {
+	if($viewData['deleted']) { echo '<script>var $alert = "File Deleted!"</script>'; }
+	else if(!$viewData['deleted']) { echo '<script>var $alert = "File Deletion Failed!");</script>'; }
+}
+
 ?>
 
 <!-- MODALS.START -->
@@ -24,6 +30,35 @@ else if(array_key_exists("uploaded", $viewData)) {
 
    <!-- Modal body -->
    <div id="preview_body" class="modal-body row justify-content-center"></div>
+
+   <!-- Modal footer -->
+
+  </div>
+ </div>
+</div>
+
+
+<!-- Confirm Deletion Modal -->
+<div class="modal fade" id="delete">
+ <div class="modal-dialog modal-lg">
+  <div class="modal-content d-flex">
+
+   <!-- Modal Header -->
+   <div class="modal-header">
+    <span class="col-sm-5"></span>
+    <h1 class="col-sm-6">Delete File</h1>
+    <button class="close" data-dismiss="modal">&times;</button>
+   </div>
+
+   <!-- Modal body -->
+   <div id="delete_file_body" class="modal-body row justify-content-center">
+	  <form id="delete_file_form" class="row justify-content-center" action="" method="POST">
+		 <div class="btn-group" style="padding-left: 25%;">
+		  <button class='btn bg-dark text-light' type='submit' name='delete' style="font-size: 20px;">Delete</button>
+			<button class='btn bg-warning' type='button' data-dismiss="modal" style="font-size: 20px;">Cancel</button>
+		 </div>
+	  </form>
+	 </div>
 
    <!-- Modal footer -->
 
@@ -59,7 +94,7 @@ else if(array_key_exists("uploaded", $viewData)) {
 							"<td>" . $vd['file_name'] . "</td>" .
 							"<td class='preview_init' data-user_id='" . $vd['user_id'] . "'" . "data-file_id='" . $vd['file_id'] . "'" . "data-file_name='" . $vd['file_name'] . "' " . "data-toggle='modal' " . "data-target='#preview' " . "><i class='fas fa-eye text-warning'></i></td>" .
 							"<td><a href='http://inchoo.local/uploads/" . $vd['user_id'] . $vd['file_name'] . "' download>" . "<div><i class='fas fa-download text-primary'></i></div></a></td>" .
-							"<td class='delete'><i class='fas fa-fire text-danger'></i></td>" .
+							"<td class='delete' data-user_id='" . $vd['user_id'] . "'" . "data-file_id='" . $vd['file_id'] . "'" . "data-file_name='" . $vd['file_name'] . "' " . "data-toggle='modal' " . "data-target='#delete' " . "onclick='pass_data(this)'><i class='fas fa-fire text-danger'></i></div></td>" .
 						 "</tr>";
 			}
 			else {
@@ -67,7 +102,7 @@ else if(array_key_exists("uploaded", $viewData)) {
 							"<td>" . $vd['file_name'] . "</td>" .
 							"<td class='preview_init' data-user_id='" . $vd['user_id'] . "'" . "data-file_id='" . $vd['file_id'] . "'" . "data-file_name='" . $vd['file_name'] . "' " . "data-toggle='modal' " . "data-target='#preview' " . "><i class='fas fa-eye text-warning'></i></td>" .
 							"<td><a href='http://inchoo.local/uploads/" . $vd['user_id'] . $vd['file_name'] . "' download>" . "<div><i class='fas fa-download text-primary'></i></div></a></td>" .
-							"<td class='delete text-danger'>Not Owner</td>" .
+							"<td class='text-danger'>Not Owner</td>" .
 						 "</tr>";
 			}
 		}
@@ -115,6 +150,40 @@ function img_up() {
 
 // Rewind Upload
 function rewind_upload() { window.location.replace("http://inchoo.local/management"); }
+
+
+function checking(i, len) {
+	var form = document.getElementById("delete_file_form")
+	console.log(i);
+	console.log(len);
+	console.log(form);
+}
+
+// Clean data from form
+function clean_data() {
+	//$(".input").remove();
+	var input = document.getElementsByClassName("input");
+	if(input.length > 0) {
+		while(input.length > 0) {
+			input[(input.length - 1)].remove();
+		}
+	}
+}
+
+// Pass Data to form
+function pass_data(me) {
+	clean_data();
+	var $delete_file_form = $("#delete_file_form");
+	var user_id = me.getAttribute("data-user_id");
+	var file_id = me.getAttribute("data-file_id");
+	var file_name = me.getAttribute("data-file_name");
+
+	var data = "<input class='input' name='user_id' value='"+ user_id+ "' style='display: none;'/>"+
+						 "<input class='input' name='file_id' value='"+ file_id+ "' style='display: none;'/>"+
+						 "<input class='input' name='file_name' value='"+ file_name+ "' style='display: none;'/>";
+
+	$delete_file_form.append(data);
+}
 
 /* Launch jQ */
 $("document").ready(function() {

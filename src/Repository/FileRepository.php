@@ -52,4 +52,8 @@ class FileRepository extends BaseRepository {
 		$result = $statement->execute();
 		return $result;
 	}
+	public function deleteFile($user_id, $file_id) {
+		$DB = $this->pdoConnection->query("DELETE FROM files WHERE user_id = $user_id AND file_id = $file_id");
+		return $DB->rowCount();
+	}
 }
