@@ -35,6 +35,10 @@ class FileRepository extends BaseRepository {
 		if($err_bool == 0) { return $viewData = false; }
 		return $viewData;
 	}
+	public function selectAllFiles() {
+		$DB = $this->pdoConnection->query("SELECT * FROM files")->fetchAll(\PDO::FETCH_ASSOC);
+		return $DB;
+	}
 	public function selectUserFilesUnionOtherFiles($viewData = null) {
 		// Get All Image Files of the User and Other Users
 		$DB = $this->pdoConnection->query("SELECT * FROM files WHERE user_id = {$_SESSION['user_id']} UNION SELECT * FROM files WHERE user_id != {$_SESSION['user_id']}")->fetchAll(\PDO::FETCH_ASSOC);

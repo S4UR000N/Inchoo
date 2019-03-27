@@ -123,7 +123,7 @@ class UserController extends BaseController {
 
 			// if Form not fully correct pass Valid and Error Data
 			if(!empty($err_data)) { $this->render_view("User:login", 1, $viewData); }
-			// else Set Cookies and Redirect
+			// else Set Session and Redirect
 			else {
 				// open DB connection
 				$userRepo = new \Repository\UserRepository();
@@ -137,10 +137,8 @@ class UserController extends BaseController {
 				$_SESSION['user_id'] = $user_check['user_id'];
 				$_SESSION['user_name'] = $user_check['user_name'];
 
-				echo "<pre>";
-				var_dump($_SESSION);
 				// Redirect
-				header("location: http://inchoo.local/");
+				header("location: http://inchoo.local/management");
 			}
 		}
 	}

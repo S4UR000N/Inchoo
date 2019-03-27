@@ -10,7 +10,7 @@ require "autoloader.php";
 $routes = require "Router/routes.php";
 
 // Get POST key to determine type of request
-function array_key_first(array $array) { if (count($array)) { reset($array); return key($array); } return null; }
+function array_key_first(array $array) { if(count($array)) { reset($array); return key($array); } return null; }
 
 // if is POST and is AJAX Request: Load AJAX Router
 // else: Load Header & Page
