@@ -17,6 +17,6 @@ return array(
     "/management"                   => "ManagementController:management",
     "/management/"                  => "ManagementController:management",
 
-    "/myaccount"                    => "MyAccountController:get",
-    "/myaccount/"                   => "MyAccountController:get"
+    "/myaccount"                    => "MyAccountController:myaccount",
+    "/myaccount/"                   => "MyAccountController:myaccount"
 );

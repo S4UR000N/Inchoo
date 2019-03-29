@@ -61,8 +61,8 @@ class UserController extends BaseController {
 			foreach($Valid as $key => $val) { if(!empty($val)) { $viewData['Valid'][$key] = $val; } }
 
 			// if Form not fully correct pass Valid and Error Data
-			if(!empty($err_data)) { $this->render_view("User:register", 1, $viewData);
-			}
+			if(!empty($err_data)) { $this->render_view("User:register", 1, $viewData); }
+			
 			// else Save User & redirect
 			else {
 				// open DB connection

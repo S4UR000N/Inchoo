@@ -32,3 +32,4 @@
 width: 100%;
 }
 .input { border-radius: 5px; }
+</style>
