@@ -15,5 +15,8 @@ return array(
     "/logout/"                      => "LogoutController:logout",
 
     "/management"                   => "ManagementController:management",
-    "/management/"                  => "ManagementController:management"
+    "/management/"                  => "ManagementController:management",
+
+    "/myaccount"                    => "MyAccountController:get",
+    "/myaccount/"                   => "MyAccountController:get"
 );

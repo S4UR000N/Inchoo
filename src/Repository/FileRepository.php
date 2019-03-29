@@ -36,7 +36,7 @@ class FileRepository extends BaseRepository {
 		return $viewData;
 	}
 	public function selectAllFiles() {
-		$DB = $this->pdoConnection->query("SELECT * FROM files")->fetchAll(\PDO::FETCH_ASSOC);
+		$DB = $this->pdoConnection->query("SELECT users.user_id, users.user_name, users.user_email, files.file_id, files.file_name FROM users JOIN files ON users.user_id = files.user_id")->fetchAll(\PDO::FETCH_ASSOC);
 		return $DB;
 	}
 	public function selectUserFilesUnionOtherFiles($viewData = null) {

@@ -203,8 +203,5 @@ $(".preview_init").click(function() {
   var file_id = this.getAttribute('data-file_id');
   var file_name = this.getAttribute('data-file_name');
   preview_body.innerHTML = "<img src='uploads/"+ user_id + file_name + "' data-file_id="+ file_id+ " data-file_name="+ file_name+ "/>";
-  $("#delete_image").click(function() {
-    delete_image(file_id, file_name);
-  });
 });
 </script>
