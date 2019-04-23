@@ -4,7 +4,7 @@
 namespace Model;
 
 // class File
-class FileModel {
+class FileModel extends BaseModel {
     // properties
     private $user_id;
     private $file_id;
